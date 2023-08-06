@@ -54,6 +54,18 @@ const footerStyle = {
     height: "18px",
     position: "relative",
     top: "3px"
-  }
+  },
+  "@media (max-width: 600px)": {
+    mobileContainer: {
+      flexDirection: "column", // Stack items vertically on mobile
+      alignItems: "center", // Center items horizontally on mobile
+    },
+    mobileLeft: {
+      marginBottom: "15px", // Add spacing between image and text
+    },
+    mobileRight: {
+      textAlign: "center", // Center text content on mobile
+    },
+  },
 };
 export default footerStyle;

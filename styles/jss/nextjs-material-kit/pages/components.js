@@ -37,7 +37,23 @@ const componentsStyle = {
   },
   textCenter: {
     textAlign: "center"
-  }
+  }, "@media (max-width: 600px)": {
+    mobileContainer: {
+      padding: "20px", // Adjust spacing for mobile
+    },
+    mobileBrand: {
+      textAlign: "center",
+      "& h1": {
+        fontSize: "24px", // Adjust font size for mobile
+      },
+      // ...
+    },
+    mobileSubtitle: {
+      fontSize: "14px", // Adjust font size for mobile
+      // ...
+    },
+    // Add other mobile-specific styles here...
+  },
 };
 
 export default componentsStyle;

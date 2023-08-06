@@ -39,7 +39,7 @@ export default function CarouselVets() {
                 </div>
                 <div>
                   <img
-                    src="/img/utop/vet2.webp"
+                    src="/img/utop/vet2.jpg"
                     alt="Second slide"
                     className="slick-image"
                     width={800}
