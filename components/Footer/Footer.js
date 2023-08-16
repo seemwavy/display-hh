@@ -34,14 +34,15 @@ export default function Footer(props) {
           <img 
           src="/img/utop/Logo.png"
           alt="Utopos Logo"
+          className={classes.img}
           />
           
         </div>
         <div className={classes.right}>
          <p>
-          Utopos aims to build the world's first futuristic, eco-friendly blockchain city where everyone can explore the city and perform everyday activities in a virtual space (Metaverse). 
-          Members earn rewards from various activities in UTOP, which is its native currency. 
-          Utopos blockchain city offers equal opportunities for everyone to own real estate and carry out constructions with ease.
+          The Utopos project aims to build the world's first futuristic, eco-friendly blockchain cities. 
+          Utilizing the power of blockchain technology, Utopos strives to create a new way of living that is fair and sustainable.
+          To find out more and help support the project, please visit our website at <a href="https://utopos.io">Utopos Homepage</a>
           </p>
         </div>
       </div>

@@ -11,24 +11,40 @@ export default function AAgrantPost() {
   return (
         <div className={classes.top}>
             <div className={classes.header}>
-                <h1>UTOPian Minority Entrepreneur Fund</h1>
+                <h1>Introducing the UTOPian Entrepreneur Fund: Pioneering the Path to Utopos' Future </h1>
                 
             </div>
             <div className={classes.date}>
                 <h4>08/25/2023</h4>
             </div>
-            <CarouselAA />
+            <div className={classes.imageContainer}>
+                <img
+                src="/img/utop/aa2.jpg"
+                alt="utop"
+                className={classes.image}
+                />
+            </div>
             <p className={classes.content}>
-                History has shown us countless examples of individuals who are capable of greatness that just needed a little help to start. 
-                Unfortunately in this world we live in, toxic social practices proliferated and locked out many such people out of prosperity for reasons beyond their control, as frivolous as the color of their skin.
-                <a href="https://www.brookings.edu/articles/who-is-driving-black-business-growth-insights-from-the-latest-data-on-black-owned-businesses/">
-                    For example in 2020, Black people in the USA represented 14.2% of all Americans but only 2.4% of all employer-firm owners.
-                </a>
-                Utopos understands the the depth of the issues minorities in the USA face and aims to do their part in undoing this imbalance with the UTOPian Minority Entrepreneur fund. 
-                This effort targets entrepreneurs and creators in fields that will be essential roles within Utopos' vision of it's smart cities in the future. Farmers, engineers, architechts, tech workers and entrepreneurs are all welcome to apply. 
-                Utopos pledges X UTOP tokens to supercharge and empower talented individuals from African American communities who often lack the financial support to bring their dream projects to life. 
-                By upholding its value of equal access to opportunity, the Minority Entrepreneur Fund strives to provide support for members of the black community, where their local and state governments may have fallen short. 
-                Through the examples we set, it is our hope that all UTOPians will consider equality and fairness in our communities going forward.
+            We are thrilled to unveil the groundbreaking initiative, the UTOPian Entrepreneur Fund, poised to revolutionize the way we approach innovation and development across various sectors. Utopos, the visionary blockchain-powered city of the future, has taken a momentous stride by launching this fund aimed at empowering entrepreneurs, architects, farmers, scientists, tech developers, and other professionals integral to the realization of Utopos' vision of it's blockchain smart city. 
+            The UTOPian Entrepreneur Fund stands as a testament to Utopos' commitment to nurturing groundbreaking ideas and fostering a thriving ecosystem that will shape the city's destiny.
+            </p><br />
+            <p className={classes.content}>
+            Designed to provide financial support and resources to individuals and teams across diverse industries, the fund is a resounding call to action for those who dare to imagine and create. 
+            Entrepreneurs will find a nurturing environment to transform their innovative concepts into reality, architects will have the opportunity to reshape urban landscapes with sustainable and aesthetic designs, farmers will cultivate advanced agricultural practices that will sustain the cities, scientists will unlock breakthroughs that elevate human progress, and tech developers will weave the digital fabric that connects the city's smart infrastructure. This fund encapsulates the very essence of Utopos.
+            </p><br />
+            <p className={classes.content}>
+            The UTOPian Entrepreneur Fund beckons the dreamers, the creators, and the pioneers to step forward and be part of a journey that will shape the future of Utopos and, quite possibly, the world itself. 
+            As applications open, the call is clear: Utopos awaits those who seek to turn their aspirations into reality, and in doing so, contribute to the emergence of a city that stands as a testament to human potential.
+            </p>
+            <p className={classes.content}>
+                To apply, click <a 
+                href="#contactForm"
+                onClick={(e) => {
+                    e.preventDefault();
+                    document
+                    .getElementById("contactForm")
+                    .scrollIntoView({ behavior: "smooth",});
+                }}>here</a>.
             </p>
         </div>
     );

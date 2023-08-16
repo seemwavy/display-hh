@@ -14,11 +14,23 @@ const blogStyle = {
       maxWidth: "800px",
       margin: "0 auto",
       padding: "20px 0",
-      textAlign: "center",
+      textAlign: "left",
     },
     top: {
       border: "1px solid #000000",
       padding: "5px"
-    }
+    },
+    
+  imageContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px", // Adjust this margin as needed
+  },
+
+  image: {
+    maxWidth: "100%", 
+    height: "auto", 
+  },
   }
   export default blogStyle

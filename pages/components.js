@@ -18,6 +18,7 @@ import Parallax from "/components/Parallax/Parallax.js";
 import SectionBasics from "/pages-sections/Components-Sections/SectionBasics.js";
 import AAgrantPost from "/pages-sections/humanitiesContent/GrantAA.jsx";
 import VetGrantPost from "/pages-sections/humanitiesContent/GrantVets.jsx";
+import ContactUtopForm from "../pages-sections/humanitiesContent/contactForm";
 import styles from "/styles/jss/nextjs-material-kit/pages/components.js";
 
 const useStyles = makeStyles(styles);
@@ -47,7 +48,13 @@ export default function Components(props) {
                 <h3 className={classes.subtitle}>
                 Welcome to the Utopos Humanities Hub! This department is responsible for managing all Utopos approved humanitarian and charitable efforts from within the ecosystem that matches
                 our values of altruism, helpfulness, giving back, providing equity and fairness. Below is a list of ongoing and past efforts. 
-                For information on how you can help out, <a>click here.</a>
+                For information on how you can help out, <a href="#contactForm" 
+                onClick={(e) => {
+                    e.preventDefault();
+                    document
+                    .getElementById("contactForm")
+                    .scrollIntoView({ behavior: "smooth",});
+                }}>click here.</a>
                 </h3>
               </div>
             </GridItem>
@@ -59,10 +66,7 @@ export default function Components(props) {
         <SectionBasics />
         <AAgrantPost />
         <VetGrantPost />
-        
-        
-       
-    
+        <ContactUtopForm />
       </div>
       <Footer />
     </div>

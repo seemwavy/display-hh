@@ -55,6 +55,10 @@ const footerStyle = {
     position: "relative",
     top: "3px"
   },
+  img: {
+    width: "20rem",
+    height: "6rem"
+  },
   "@media (max-width: 600px)": {
     mobileContainer: {
       flexDirection: "column", // Stack items vertically on mobile
