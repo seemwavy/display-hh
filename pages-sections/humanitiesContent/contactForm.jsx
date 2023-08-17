@@ -22,27 +22,35 @@ export default function ContactUtopForm() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const formDataToSend = new FormData(form);
-        formDataToSend.append("access_token", accessToken);
-        try {
-          const response = await fetch("https://postmail.invotes.com/send", {
-              method: "POST",
-              body: formDataToSend,
-          });
-
-          if (response.ok) {
-              console.log("Email sent successfully");
-              // Handle success as needed
-          } else {
-              console.error("Email sending failed");
-              // Handle error as needed
-          }
+      e.preventDefault();
+      const form = e.target;
+      const formDataToSend = new FormData(form);
+      formDataToSend.append("access_token", accessToken);
+    
+      try {
+        const response = await fetch("https://postmail.invotes.com/send", {
+          method: "POST",
+          body: formDataToSend,
+        });
+    
+        if (response.ok) {
+          console.log("Email sent successfully");
+          // Display a success message to the user
+          alert("Email sent successfully!");
+          // You can also reset the form after successful submission
+          form.reset();
+        } else {
+          console.error("Email sending failed");
+          // Display an error message to the user
+          alert("Email sending failed. Please try again later.");
+        }
       } catch (error) {
-          console.error("An error occurred while sending the email", error);
+        console.error("An error occurred while sending the email", error);
+        // Display an error message to the user
+        alert("An error occurred while sending the email. Please try again later.");
       }
     };
+    
   return (
     <div id="contactForm">
       <form style={styles.formContainer} onSubmit={handleSubmit}>
