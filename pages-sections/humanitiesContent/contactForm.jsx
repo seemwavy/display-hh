@@ -1,77 +1,48 @@
-
 import React, { useState } from "react";
 import styles from "/styles/jss/utop/formstyle.js";
 import RegularButton from "../../components/CustomButtons/Button";
 export default function ContactUtopForm() {
-    const [formData, setFormData] = useState({
-        project: "",
-        deckLink: "",
-        linkedin: "",
-        cofounder: "",
-        website: "",
-        email: "",
-        telegram: "",
-        amount: "",
-        description: "",
-        why: "",
-        history: "",
-    });
-    const accessToken = "7ao71eog601nhouowjeos4do"
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      
-      const form = e.target;
-      const subject = formData.project; // Use project as subject, you can modify this accordingly
-      const message = formData.description; // Use description as message, you can modify this accordingly
-    
-      const data_js = {
-        "access_token": accessToken,
-        "subject": subject,
-        "text": message
-      };
-    
-      const sendButton = form.querySelector("#js_send");
-      sendButton.value = 'Sending…';
-      sendButton.disabled = true;
-    
-      var request = new XMLHttpRequest();
-      request.onreadystatechange = function() {
-        if (request.readyState === 4) {
-          if (request.status === 200) {
-            console.log("Email sent successfully");
-            alert("Email sent successfully!");
-            form.reset();
-          } else {
-            console.error("Email sending failed");
-            alert("Email sending failed. Please try again later.");
-          }
-          sendButton.value = 'Send';
-          sendButton.disabled = false;
-        }
-      };
-    
-      const params = toParams(data_js);
-    
-      request.open("POST", "https://postmail.invotes.com/send", true);
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      request.send(params);
-    };
-    function toParams(data_js) {
-      var form_data = [];
-      for ( var key in data_js ) {
-          form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
-      }
+  const [formData, setFormData] = useState({
+    project: "",
+    deckLink: "",
+    linkedin: "",
+    cofounder: "",
+    website: "",
+    email: "",
+    telegram: "",
+    amount: "",
+    description: "",
+    why: "",
+    history: "",
+  });
 
-      return form_data.join("&");
-  }
-S
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const createMailtoLink = () => {
+    const subject = "Grant Application";
+    const email = "mac450@protonmail.com"; 
+
+    let body = "Project: " + formData.project + "\n";
+    body += "Deck Link: " + formData.deckLink + "\n";
+    body += "Linkedin: " + formData.linkedin + "\n";
+    body += "CoFounder(Optional): " + formData.cofounder + "\n";
+    body += "Website(Optional): " + formData.website + "\n";
+    body += "Email(Optional): " + formData.email + "\n";
+    body += "Telegram(Optional): " + formData.telegram + "\n";
+    body += "Amount(Optional): " + formData.amount + "\n";
+    body += "Description: " + formData.description + "\n";
+    body += "Why Utopos?(Optional): " + formData.why + "\n";
+    body += "History(Optional): " + formData.history + "\n";
+
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+    
   return (
     <div id="contactForm">
-      <form style={styles.formContainer} onSubmit={handleSubmit}>
+      <form style={styles.formContainer} >
         <h1>Grant Application</h1>
         <label htmlFor="project">Project</label>
         <input style={{...styles.input}} type="text" id="project" 
@@ -125,7 +96,9 @@ S
           value={formData.history} onChange={handleChange}
         ></textarea>
         {/* ... */}
-        <RegularButton type="submit" color="info" size="lg">Submit</RegularButton>
+        <a href={createMailtoLink()}>
+          <RegularButton color="info" size="lg">Submit</RegularButton>
+        </a>
       </form>
     </div>
   );
