@@ -23,34 +23,52 @@ export default function ContactUtopForm() {
     };
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
       const form = e.target;
-      const formDataToSend = new FormData(form);
-      formDataToSend.append("access_token", accessToken);
+      const subject = formData.project; // Use project as subject, you can modify this accordingly
+      const message = formData.description; // Use description as message, you can modify this accordingly
     
-      try {
-        const response = await fetch("https://postmail.invotes.com/send", {
-          method: "POST",
-          body: formDataToSend,
-        });
+      const data_js = {
+        "access_token": accessToken,
+        "subject": subject,
+        "text": message
+      };
     
-        if (response.ok) {
-          console.log("Email sent successfully");
-          // Display a success message to the user
-          alert("Email sent successfully!");
-          // You can also reset the form after successful submission
-          form.reset();
-        } else {
-          console.error("Email sending failed");
-          // Display an error message to the user
-          alert("Email sending failed. Please try again later.");
+      const sendButton = form.querySelector("#js_send");
+      sendButton.value = 'Sending…';
+      sendButton.disabled = true;
+    
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            console.log("Email sent successfully");
+            alert("Email sent successfully!");
+            form.reset();
+          } else {
+            console.error("Email sending failed");
+            alert("Email sending failed. Please try again later.");
+          }
+          sendButton.value = 'Send';
+          sendButton.disabled = false;
         }
-      } catch (error) {
-        console.error("An error occurred while sending the email", error);
-        // Display an error message to the user
-        alert("An error occurred while sending the email. Please try again later.");
-      }
-    };
+      };
     
+      const params = toParams(data_js);
+    
+      request.open("POST", "https://postmail.invotes.com/send", true);
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      request.send(params);
+    };
+    function toParams(data_js) {
+      var form_data = [];
+      for ( var key in data_js ) {
+          form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
+      }
+
+      return form_data.join("&");
+  }
+S
   return (
     <div id="contactForm">
       <form style={styles.formContainer} onSubmit={handleSubmit}>
