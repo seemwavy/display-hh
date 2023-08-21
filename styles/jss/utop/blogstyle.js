@@ -17,7 +17,7 @@ const blogStyle = {
       textAlign: "left",
     },
     top: {
-      border: "1px solid #000000",
+      
       padding: "5px"
     },
     
